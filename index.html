@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio | Álvaro Iglesias</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #04050a;
+        --bg-accent: #0c1021;
+        --fg: #f4f7ff;
+        --muted: #a6b0cf;
+        --primary: #6c63ff;
+        --secondary: #2dd4bf;
+        --card: rgba(12, 16, 33, 0.75);
+        --border: rgba(255, 255, 255, 0.08);
+        font-size: 16px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        min-height: 100vh;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle at 20% 20%, rgba(108, 99, 255, 0.15), transparent 40%),
+          radial-gradient(circle at 80% 0%, rgba(45, 212, 191, 0.17), transparent 35%),
+          radial-gradient(circle at 0% 80%, rgba(147, 51, 234, 0.12), transparent 45%);
+        opacity: 0.8;
+        z-index: -2;
+      }
+
+      body::after {
+        filter: blur(60px);
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        backdrop-filter: blur(16px);
+        background: rgba(4, 5, 10, 0.65);
+        border-bottom: 1px solid var(--border);
+        z-index: 5;
+      }
+
+      nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: var(--fg);
+      }
+
+      .logo {
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--fg);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.75rem;
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+      }
+
+      section {
+        position: relative;
+        border-radius: 2rem;
+        padding: 3rem;
+        background: linear-gradient(135deg, rgba(12, 16, 33, 0.9), rgba(10, 12, 26, 0.7));
+        border: 1px solid transparent;
+        border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)) 1;
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45);
+        overflow: hidden;
+      }
+
+      section::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, rgba(108, 99, 255, 0.12), rgba(45, 212, 191, 0.08));
+        mix-blend-mode: screen;
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      section > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .hero-text h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        line-height: 1.1;
+        margin-bottom: 1rem;
+      }
+
+      .highlight {
+        color: var(--secondary);
+      }
+
+      .hero-text p {
+        color: var(--muted);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        max-width: 50ch;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .btn {
+        text-decoration: none;
+        padding: 0.95rem 1.75rem;
+        border-radius: 999px;
+        font-weight: 600;
+        border: 1px solid transparent;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+      }
+
+      .btn-primary {
+        background: linear-gradient(120deg, var(--primary), #9f7aea);
+        color: #fff;
+        box-shadow: 0 20px 35px rgba(108, 99, 255, 0.3);
+      }
+
+      .btn-secondary {
+        color: var(--fg);
+        border-color: rgba(255, 255, 255, 0.25);
+        background: transparent;
+      }
+
+      .btn:hover {
+        transform: translateY(-4px);
+      }
+
+      .hero-visual {
+        perspective: 1200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 360px;
+      }
+
+      .visual-card {
+        width: min(420px, 90%);
+        aspect-ratio: 3 / 4;
+        background: linear-gradient(180deg, rgba(108, 99, 255, 0.4), rgba(12, 16, 33, 0.9));
+        border-radius: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 50px 90px rgba(0, 0, 0, 0.55);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2rem;
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease, border 0.3s ease;
+      }
+
+      .visual-card:hover {
+        border-color: rgba(255, 255, 255, 0.35);
+      }
+
+      .visual-card h3 {
+        font-size: 1.35rem;
+        letter-spacing: 0.05em;
+      }
+
+      .visual-card .tagline {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .visual-card .badge {
+        align-self: flex-start;
+        padding: 0.35rem 0.9rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+      }
+
+      .orb {
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(108, 99, 255, 0.4));
+        opacity: 0.7;
+        filter: blur(0px);
+        animation: float 10s ease-in-out infinite;
+        mix-blend-mode: screen;
+      }
+
+      .orb:nth-child(1) {
+        top: -30%;
+        right: -10%;
+      }
+
+      .orb:nth-child(2) {
+        bottom: -35%;
+        left: -15%;
+        animation-delay: -4s;
+        background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(45, 212, 191, 0.35));
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+        50% {
+          transform: translate3d(0, -20px, 30px) scale(1.05);
+        }
+      }
+
+      .section-title {
+        font-size: 1rem;
+        letter-spacing: 0.25em;
+        color: var(--secondary);
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .section-title::before {
+        content: "";
+        width: 36px;
+        height: 1px;
+        background: currentColor;
+        opacity: 0.7;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 1rem;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.75rem;
+        margin-top: 2rem;
+      }
+
+      .project-card {
+        background: var(--card);
+        padding: 1.75rem;
+        border-radius: 1.5rem;
+        border: 1px solid var(--border);
+        transition: transform 0.4s ease, border 0.4s ease, box-shadow 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-card::after {
+        content: "";
+        position: absolute;
+        inset: -40% 10% auto 10%;
+        height: 80%;
+        background: linear-gradient(120deg, rgba(108, 99, 255, 0.4), transparent);
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+        transition: 0.6s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+      }
+
+      .project-card:hover::after {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+
+      .project-card h3 {
+        margin-bottom: 0.75rem;
+      }
+
+      .project-meta {
+        font-size: 0.9rem;
+        letter-spacing: 0.1em;
+        color: var(--secondary);
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .skill-card {
+        padding: 1.5rem;
+        border-radius: 1.25rem;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.01);
+        backdrop-filter: blur(10px);
+      }
+
+      .skill-card h4 {
+        margin-bottom: 1rem;
+      }
+
+      .skill-pill {
+        display: inline-block;
+        padding: 0.35rem 0.9rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: var(--muted);
+        font-size: 0.85rem;
+        margin: 0.25rem;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .contact-card {
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+        border: 1px solid var(--border);
+        background: rgba(4, 5, 10, 0.6);
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--fg);
+        font-size: 1rem;
+        transition: border 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--secondary);
+        box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.15);
+      }
+
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      footer {
+        text-align: center;
+        color: var(--muted);
+        padding: 3rem 1.5rem 4rem;
+      }
+
+      @media (max-width: 768px) {
+        section {
+          padding: 2rem;
+        }
+
+        nav {
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero-actions {
+          justify-content: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="#" class="logo">ÁLVARO IGLESIAS</a>
+        <div class="nav-links">
+          <a href="#inicio">Inicio</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#habilidades">Habilidades</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="inicio" class="hero">
+        <div class="hero-text">
+          <span class="section-title">Inicio</span>
+          <h1>
+            Diseño experiencias digitales con <span class="highlight">impacto tridimensional</span>
+          </h1>
+          <p>
+            Soy un desarrollador creativo especializado en experiencias web inmersivas. Combino interfaces limpias
+            con microinteracciones 3D para comunicar historias tecnológicas que conectan con las personas.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+            <a class="btn btn-secondary" href="#contacto">Hablemos</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="visual-card" id="visualCard">
+            <div class="badge">Disponible</div>
+            <h3>Lead Frontend & Experiencias 3D</h3>
+            <p class="tagline">8 años diseñando productos digitales premium</p>
+            <div style="margin-top: auto;">
+              <p class="muted">Tech Stack</p>
+              <p>React · Three.js · WebGL · GSAP</p>
+            </div>
+          </div>
+          <span class="orb"></span>
+          <span class="orb"></span>
+        </div>
+      </section>
+
+      <section id="proyectos">
+        <span class="section-title">Proyectos</span>
+        <h2>Experiencias seleccionadas</h2>
+        <p class="muted">
+          Cada proyecto combina estrategia, narrativa visual y tecnologías emergentes para potenciar la presencia digital de marcas globales.
+        </p>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-meta">Experiencia VR</div>
+            <h3>Metropolis Studio</h3>
+            <p class="muted">
+              Plataforma interactiva que integra WebGL y sonido espacial para recorrer una ciudad futurista en tiempo real.
+            </p>
+          </article>
+          <article class="project-card">
+            <div class="project-meta">E-commerce 3D</div>
+            <h3>Nova Wearables</h3>
+            <p class="muted">
+              Catálogo inmersivo donde los usuarios exploran modelos 3D de productos y personalizan materiales al instante.
+            </p>
+          </article>
+          <article class="project-card">
+            <div class="project-meta">Data Storytelling</div>
+            <h3>Orbital Insights</h3>
+            <p class="muted">
+              Dashboard narrativo con visualizaciones volumétricas que simplifican la lectura de big data financiero.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="habilidades">
+        <span class="section-title">Habilidades</span>
+        <h2>Toolkit multidisciplinario</h2>
+        <p class="muted">
+          Desarrollo interfaces cohesivas que equilibran rendimiento, accesibilidad y emoción visual.
+        </p>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h4>Frontend</h4>
+            <span class="skill-pill">React</span>
+            <span class="skill-pill">Next.js</span>
+            <span class="skill-pill">TypeScript</span>
+            <span class="skill-pill">Tailwind</span>
+          </div>
+          <div class="skill-card">
+            <h4>Experiencias 3D</h4>
+            <span class="skill-pill">Three.js</span>
+            <span class="skill-pill">WebGL</span>
+            <span class="skill-pill">GSAP</span>
+            <span class="skill-pill">Spline</span>
+          </div>
+          <div class="skill-card">
+            <h4>Producto</h4>
+            <span class="skill-pill">Design Systems</span>
+            <span class="skill-pill">UX Research</span>
+            <span class="skill-pill">Prototipado</span>
+            <span class="skill-pill">Storytelling</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto">
+        <span class="section-title">Contacto</span>
+        <h2>Construyamos algo memorable</h2>
+        <p class="muted">
+          Cuéntame sobre tu próximo proyecto y cómo podemos darle una presencia digital diferente.
+        </p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h4>Datos directos</h4>
+            <p class="muted">correo@alvaroiglesias.com</p>
+            <p class="muted">+34 600 000 000</p>
+            <p class="muted">Madrid · Remoto</p>
+          </div>
+          <div class="contact-card">
+            <form>
+              <input type="text" placeholder="Nombre" required />
+              <input type="email" placeholder="Email" required />
+              <textarea placeholder="Cuéntame sobre tu proyecto" required></textarea>
+              <button class="btn btn-primary" type="submit">Enviar mensaje</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Álvaro Iglesias — Experiencias digitales con carácter propio.
+    </footer>
+
+    <script>
+      const visualCard = document.getElementById("visualCard");
+      const constrain = 15;
+
+      document.addEventListener("mousemove", (event) => {
+        const { innerWidth, innerHeight } = window;
+        const rotateY = ((event.clientX - innerWidth / 2) / innerWidth) * constrain;
+        const rotateX = ((innerHeight / 2 - event.clientY) / innerHeight) * constrain;
+
+        visualCard.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+      });
+
+      document.addEventListener("mouseleave", () => {
+        visualCard.style.transform = "rotateY(0deg) rotateX(0deg)";
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
