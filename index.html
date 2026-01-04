@@ -1,1 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>Developer Portfolio — 3D</title>
+    <meta
+      name="description"
+      content="A modern developer portfolio with an interactive 3D background."
+    />
+
+    <meta property="og:title" content="Developer Portfolio — 3D" />
+    <meta
+      property="og:description"
+      content="A modern developer portfolio with an interactive 3D background."
+    />
+    <meta property="og:type" content="website" />
+
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link rel="stylesheet" href="./style.css" />
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.1/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.1/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <canvas id="bg" aria-hidden="true"></canvas>
+    <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
+    <div id="webglNotice" class="notice" hidden>
+      <div class="notice__card">
+        <h2>3D is unavailable</h2>
+        <p>
+          Your browser/device doesn’t support WebGL. The portfolio still works —
+          you’re seeing the lightweight version.
+        </p>
+      </div>
+    </div>
+
+    <header class="header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#top" id="top">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__text">Your Name</span>
+        </a>
+
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="navLinks">
+          <span class="sr-only">Open menu</span>
+          <span class="nav__toggleLines" aria-hidden="true"></span>
+        </button>
+
+        <div class="nav__links" id="navLinks">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+          <a class="btn btn--sm" href="#projects">View work</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="content" class="main">
+      <section class="hero">
+        <div class="hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow">3D Portfolio • Developer</p>
+            <h1>
+              Building clean products
+              <span class="accent">with delightful UX</span>.
+            </h1>
+            <p class="lead">
+              I’m a developer focused on performant web apps, thoughtful design systems, and
+              reliable engineering. Hover the 3D objects to explore my stack.
+            </p>
+
+            <div class="hero__cta">
+              <a class="btn" href="#projects">Explore projects</a>
+              <a class="btn btn--ghost" href="#contact">Let’s talk</a>
+            </div>
+
+            <div class="metaRow" aria-label="Quick stats">
+              <div class="pill">
+                <div class="pill__k">Focus</div>
+                <div class="pill__v">Frontend / Full‑stack</div>
+              </div>
+              <div class="pill">
+                <div class="pill__k">Strength</div>
+                <div class="pill__v">Performance & DX</div>
+              </div>
+              <div class="pill">
+                <div class="pill__k">Availability</div>
+                <div class="pill__v">Open to work</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__card" aria-label="Highlights">
+            <div class="glass">
+              <h2>Highlights</h2>
+              <ul class="list">
+                <li><span class="dot"></span>3D background with hover interactions</li>
+                <li><span class="dot"></span>Responsive layout + keyboard-friendly navigation</li>
+                <li><span class="dot"></span>Reduced-motion support + sensible performance caps</li>
+              </ul>
+
+              <div class="divider"></div>
+
+              <p class="small">
+                Tip: Move your mouse (or finger) over the scene. The tooltip shows what each node represents.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="section__head">
+          <h2>About</h2>
+          <p>
+            I build accessible interfaces, ship features with confidence, and keep the codebase healthy.
+            I like TypeScript, component-driven UI, and pragmatic architecture.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>What I do</h3>
+            <p>
+              Product UI, design systems, API integrations, performance tuning, testing, and CI/CD.
+            </p>
+          </article>
+          <article class="card">
+            <h3>How I work</h3>
+            <p>
+              Clear communication, small iterations, measurable outcomes, and clean interfaces between components.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Tooling I like</h3>
+            <p>
+              TypeScript, React, Three.js, Node, Postgres, and modern build tooling.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section__head">
+          <h2>Projects</h2>
+          <p>Replace these with your real projects and links.</p>
+        </div>
+
+        <div class="projects">
+          <article class="project">
+            <div class="project__top">
+              <h3>Realtime Dashboard</h3>
+              <span class="tag">Web</span>
+            </div>
+            <p>
+              Fast, filterable dashboards with streaming updates and strong UX patterns.
+            </p>
+            <div class="project__actions">
+              <a class="btn btn--sm" href="#" aria-disabled="true">Live</a>
+              <a class="btn btn--sm btn--ghost" href="#" aria-disabled="true">Code</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project__top">
+              <h3>Design System</h3>
+              <span class="tag">UI</span>
+            </div>
+            <p>
+              Accessible components, tokens, theming, and developer docs built for scaling teams.
+            </p>
+            <div class="project__actions">
+              <a class="btn btn--sm" href="#" aria-disabled="true">Docs</a>
+              <a class="btn btn--sm btn--ghost" href="#" aria-disabled="true">Code</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project__top">
+              <h3>3D Product Showcase</h3>
+              <span class="tag">3D</span>
+            </div>
+            <p>
+              Lightweight Three.js scenes with progressive enhancement and great performance.
+            </p>
+            <div class="project__actions">
+              <a class="btn btn--sm" href="#" aria-disabled="true">Demo</a>
+              <a class="btn btn--sm btn--ghost" href="#" aria-disabled="true">Code</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section section--tight">
+        <div class="section__head">
+          <h2>Contact</h2>
+          <p>
+            Want to build something? Email me, or drop your details here (it opens your mail app).
+          </p>
+        </div>
+
+        <form class="form" action="mailto:you@example.com" method="post" enctype="text/plain">
+          <label class="field">
+            <span>Name</span>
+            <input name="name" autocomplete="name" placeholder="Your name" required />
+          </label>
+          <label class="field">
+            <span>Email</span>
+            <input
+              type="email"
+              name="email"
+              autocomplete="email"
+              placeholder="you@company.com"
+              required
+            />
+          </label>
+          <label class="field field--full">
+            <span>Message</span>
+            <textarea name="message" rows="5" placeholder="What are we building?" required></textarea>
+          </label>
+          <div class="form__actions">
+            <button class="btn" type="submit">Send</button>
+            <a class="btn btn--ghost" href="mailto:you@example.com">Email directly</a>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <span>© <span id="year"></span> Your Name</span>
+        <div class="footer__links">
+          <a href="#top">Back to top</a>
+          <a href="#" aria-disabled="true">GitHub</a>
+          <a href="#" aria-disabled="true">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
 
