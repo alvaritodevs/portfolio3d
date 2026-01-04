@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portafolio 3D | Futurista</title>
+    <title>Álvaro Iglesias Reina | Portafolio 3D Premium</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,6 +20,12 @@
         --text: #f5f7ff;
         --muted: rgba(245, 247, 255, 0.65);
         --glow: 0 0 20px rgba(31, 123, 255, 0.6);
+        scroll-behavior: smooth;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
       }
 
       * {
@@ -119,6 +125,35 @@
         color: var(--muted);
         line-height: 1.8;
         margin-bottom: 2rem;
+      }
+
+      .hero-subtitle {
+        margin: 0 0 1.5rem;
+        font-size: 1.1rem;
+        color: var(--aqua);
+        letter-spacing: 0.05rem;
+      }
+
+      .hero-highlights {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem;
+        display: grid;
+        gap: 0.6rem;
+      }
+
+      .hero-highlights li {
+        color: var(--muted);
+        display: flex;
+        gap: 0.8rem;
+        align-items: center;
+        font-size: 0.95rem;
+      }
+
+      .hero-highlights li::before {
+        content: "⟡";
+        color: var(--electric);
+        font-size: 1rem;
       }
 
       .hero-actions {
@@ -242,9 +277,51 @@
         text-transform: uppercase;
       }
 
+      .skills-grid,
       .timeline {
         display: grid;
         gap: 1.5rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .skill-card {
+        padding: 1.5rem;
+        border-radius: 20px;
+        border: 1px solid rgba(79, 212, 255, 0.2);
+        background: rgba(6, 16, 32, 0.8);
+        position: relative;
+      }
+
+      .skill-card h3 {
+        margin: 0 0 0.7rem;
+        font-size: 1.15rem;
+      }
+
+      .skill-metric {
+        margin-top: 1rem;
+        font-size: 0.85rem;
+        letter-spacing: 0.08rem;
+        color: var(--aqua);
+        text-transform: uppercase;
+      }
+
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0 0;
+      }
+
+      .tag {
+        padding: 0.35rem 0.9rem;
+        border-radius: 999px;
+        background: rgba(31, 123, 255, 0.15);
+        border: 1px solid rgba(79, 212, 255, 0.3);
+        font-size: 0.8rem;
+        letter-spacing: 0.04rem;
       }
 
       .timeline-item {
@@ -290,6 +367,30 @@
         font-size: 0.75rem;
       }
 
+      .cta {
+        text-align: center;
+        background: linear-gradient(135deg, rgba(4, 10, 24, 0.9), rgba(12, 28, 50, 0.9));
+      }
+
+      .cta h3 {
+        margin: 0 0 1rem;
+        font-size: 1.8rem;
+      }
+
+      .cta p {
+        color: var(--muted);
+        margin: 0 auto 2rem;
+        max-width: 600px;
+        line-height: 1.8;
+      }
+
+      .cta-actions {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
       @media (max-width: 768px) {
         header {
           padding: 3rem 1.5rem 2rem;
@@ -312,17 +413,25 @@
       <div class="hero">
         <article class="hero-card" data-tilt>
           <div class="hero-badge">
-            <span>Ingeniería</span>
-            <span>+ Diseño</span>
+            <span>Arquitectura XR</span>
+            <span>+ Producto</span>
           </div>
-          <h1 class="hero-title">Alex Rivera</h1>
+          <h1 class="hero-title">Álvaro Iglesias Reina</h1>
+          <p class="hero-subtitle">Lead XR Product Architect · Madrid · Remoto global</p>
           <p class="hero-description">
-            Arquitecto de experiencias digitales con enfoque en gráficos 3D, aplicaciones web críticas y sistemas
-            impulsados por datos. Conecta visión estratégica con implementación técnica de alto nivel.
+            Combino ingeniería de telecomunicaciones, diseño inmersivo y liderazgo de producto para lanzar experiencias
+            3D premium en movilidad, industria y retail. Traduzco hojas de ruta corporativas en plataformas XR seguras,
+            medibles y listas para escalar a nivel enterprise.
           </p>
+          <ul class="hero-highlights">
+            <li>12+ años impulsando soluciones WebGL, WebGPU y Realidad Extendida</li>
+            <li>Dirección de equipos híbridos en Europa, USA y LATAM</li>
+            <li>Foco en métricas de adopción, eficiencia energética y ROI</li>
+          </ul>
           <div class="hero-actions">
-            <button class="btn btn-primary">Descargar CV</button>
-            <button class="btn btn-secondary">Contactar</button>
+            <a class="btn btn-primary" href="https://www.linkedin.com/in/alvaroiglesiasreina" target="_blank"
+              rel="noreferrer">Ver LinkedIn</a>
+            <a class="btn btn-secondary" href="mailto:hello@alvaroiglesias.com">Enviar mensaje</a>
           </div>
         </article>
         <article class="hero-card" data-tilt>
@@ -338,29 +447,79 @@
         <h2>Proyectos destacados</h2>
         <div class="projects">
           <div class="project-card" data-tilt>
-            <h3>Nexus XR Lab</h3>
+            <h3>AERIS Command Portal</h3>
             <p>
-              Laboratorio virtual para prototipos industriales, renderizado en WebGL y actualizado en tiempo real con
-              telemetría IoT simulada.
+              Gemelo digital para flotas de movilidad aérea avanzada. Orquesté streaming 3D en WebGPU con
+              actualizaciones telemétricas de baja latencia y paneles C-level.
             </p>
-            <div class="project-meta">WebGL · Node · Three.js</div>
+            <div class="project-meta">WebGPU · Three.js · Edge Streaming</div>
           </div>
           <div class="project-card" data-tilt>
-            <h3>Atlas Insights</h3>
+            <h3>Nova Transit Digital Twin</h3>
             <p>
-              Plataforma de analítica para directivos con dashboards volumétricos y capas 3D que exponen patrones de
-              datos complejos.
+              Plataforma de simulación XR para operadores ferroviarios europeos. Integré sensores IoT y modelado
+              predictivo para reducir incidentes en un 28%.
             </p>
-            <div class="project-meta">React · D3 · Cloud</div>
+            <div class="project-meta">IoT · Azure Digital Twins · Unreal</div>
           </div>
           <div class="project-card" data-tilt>
-            <h3>Pulse Navigation</h3>
+            <h3>Omnia Retail Training Suite</h3>
             <p>
-              Sistema de navegación inmersivo para vehículos conceptuales, con interfaz holográfica y reconocimiento de
-              gestos.
+              Suite de entrenamiento inmersivo para 32 hubs logísticos. Diseñé journeys 3D guiados y mediciones de
+              engagement conectadas a PowerBI.
             </p>
-            <div class="project-meta">AI · Vision · UX</div>
+            <div class="project-meta">React · Babylon.js · Analytics</div>
           </div>
+        </div>
+      </section>
+
+      <section id="habilidades">
+        <h2>Tecnologías y enfoque</h2>
+        <div class="skills-grid">
+          <article class="skill-card" data-tilt>
+            <h3>Frameworks inmersivos</h3>
+            <p>Arquitecturas modulares para contenidos volumétricos y dispositivos mixtos.</p>
+            <div class="tag-list">
+              <span class="tag">Three.js</span>
+              <span class="tag">Babylon.js</span>
+              <span class="tag">WebGPU</span>
+              <span class="tag">Unity WebXR</span>
+            </div>
+            <div class="skill-metric">+45 lanzamientos WebXR</div>
+          </article>
+          <article class="skill-card" data-tilt>
+            <h3>Plataformas cloud</h3>
+            <p>Diseño de pipelines seguros y observables sobre infra multi-cloud.</p>
+            <div class="tag-list">
+              <span class="tag">Azure</span>
+              <span class="tag">AWS</span>
+              <span class="tag">GCP</span>
+              <span class="tag">Edge GPU</span>
+            </div>
+            <div class="skill-metric">99.95% SLA mantenido</div>
+          </article>
+          <article class="skill-card" data-tilt>
+            <h3>Product leadership</h3>
+            <p>Traducción de insight de cliente en rutas de valor medibles.</p>
+            <div class="tag-list">
+              <span class="tag">OKRs</span>
+              <span class="tag">Discovery</span>
+              <span class="tag">Design Ops</span>
+              <span class="tag">RevOps</span>
+            </div>
+            <div class="skill-metric">+38M € impacto</div>
+          </article>
+          <article class="skill-card" data-tilt>
+            <h3>Data storytelling</h3>
+            <p>Dashboards volumétricos y analítica envolvente para stakeholders.</p>
+            <div class="tag-list">
+              <span class="tag">D3</span>
+              <span class="tag">PowerBI</span>
+              <span class="tag">Superset</span>
+              <span class="tag">AI copilots</span>
+            </div>
+            <div class="skill-metric">+120 sesiones ejecutivas</div>
+          </article>
         </div>
       </section>
 
@@ -368,34 +527,55 @@
         <h2>Experiencia y formación</h2>
         <div class="timeline">
           <article class="timeline-item" data-tilt>
-            <h3>Líder de Innovación 3D</h3>
-            <span>Quantum Forge · 2022 — Presente</span>
+            <h3>Lead XR Product Architect</h3>
+            <span>Strata Mobility Cloud · 2023 — Presente</span>
             <p>
-              Lidero squads interdisciplinarios para construir productos inmersivos B2B, definiendo arquitecturas
-              escalables y pipelines de renderizado.
+              Lidero la práctica XR para programas de movilidad aérea y terrestre. Defino estándares de diseño 3D,
+              roadmaps trimestrales y partnerships con fabricantes de hardware.
             </p>
           </article>
           <article class="timeline-item" data-tilt>
-            <h3>Senior Creative Technologist</h3>
-            <span>Nova Interface · 2018 — 2022</span>
+            <h3>Senior XR Solutions Engineer</h3>
+            <span>Telefónica Tech · 2020 — 2023</span>
             <p>
-              Diseñé experiencias interactivas para marcas globales, integrando motores 3D, edge computing y flujos
-              colaborativos.
+              Implementé pilotos XR regulados para energía y retail, homologando seguridad, accesibilidad y monitoreo
+              continuo de KPIs.
             </p>
           </article>
           <article class="timeline-item" data-tilt>
-            <h3>Máster en Visual Computing</h3>
+            <h3>XR Product Consultant</h3>
+            <span>Accenture Song · 2016 — 2020</span>
+            <p>
+              Lideré discovery técnico para bancos y telcos, creando frameworks de escalado y gobernanza de experiencias
+              inmersivas.
+            </p>
+          </article>
+          <article class="timeline-item" data-tilt>
+            <h3>Máster en Ingeniería de Telecomunicaciones</h3>
             <span>Universidad Politécnica de Madrid</span>
             <p>
-              Especialización en gráficos en tiempo real, sistemas XR y percepción visual aplicada a interfaces
-              avanzadas.
+              Especialización en computación visual y redes de baja latencia aplicadas a gráficos en tiempo real.
             </p>
           </article>
         </div>
       </section>
+
+      <section id="cta" class="cta">
+        <h3>¿Activamos tu próxima experiencia XR?</h3>
+        <p>
+          Estoy ayudando a compañías de movilidad, lujo y energía a transformar operaciones con productos inmersivos
+          medibles. Agenda una sesión estratégica o conéctame con tu equipo de innovación.
+        </p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/alvaroiglesiasreina" target="_blank"
+            rel="noreferrer">Abrir LinkedIn</a>
+          <a class="btn btn-secondary" href="mailto:hello@alvaroiglesias.com?subject=Explorar%20proyecto%20XR">Agendar
+            llamada</a>
+        </div>
+      </section>
     </main>
 
-    <footer>© 2026 · Alex Rivera · Estrategia + Tecnología</footer>
+    <footer>© 2026 · Álvaro Iglesias Reina · Estrategia + Tecnología XR</footer>
 
     <script>
       const tiltElements = document.querySelectorAll("[data-tilt]");
